@@ -1,0 +1,15 @@
+package ru.skillbranch.devintensive.models
+
+import ru.skillbranch.devintensive.extensions.humanizeDiff
+import java.util.*
+
+class TextMesage(
+    id:String,
+    from: User?,
+    chat:Chat,
+    isIncomming: Boolean = false,
+    date: Date = Date(),
+    var text:String?
+):BaseMessage(id, from, chat, isIncomming,date) {
+    override fun formatMessage() :String= "id:$id ${from?.firstName} ${if (isIncomming) "получил" else "отпраил"} изображение" +
+            " \"$text\" ${date.humanizeDiff()}"}
